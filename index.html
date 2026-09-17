@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0b4a30">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>Sổ phát Quyết định NVQS</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./logo-bchqs.png">
+  <link rel="apple-touch-icon" href="./logo-bchqs.png">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="top-inner">
+    <img src="./logo-bchqs.png" class="logo" alt="Logo">
+    <div class="brand">
+      <b>SỔ PHÁT QUYẾT ĐỊNH</b>
+      <small>Nghĩa vụ quân sự</small>
+    </div>
+    <span id="netBadge" class="net-badge">ONLINE</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <section id="emptyState" class="empty-card card">
+    <div class="empty-icon">📋</div>
+    <h1>Mở sổ phát Quyết định</h1>
+    <p>Chọn file danh sách mà Ban CHQS gửi qua Zalo. Chỉ cần nạp một lần, hôm sau mở lại vẫn còn nguyên tiến độ.</p>
+    <label class="btn primary block file-btn">CHỌN FILE DANH SÁCH
+      <input id="rosterFile" type="file" accept=".json,application/json" hidden>
+    </label>
+    <small class="privacy-note">Danh sách chỉ lưu trên điện thoại này, không tải lên GitHub.</small>
+  </section>
+
+  <section id="app" class="hidden">
+    <section class="book-head card">
+      <div class="book-head-main">
+        <span class="eyebrow">ĐANG PHÁT QUYẾT ĐỊNH</span>
+        <h1 id="thonName">—</h1>
+        <div id="progressText" class="progress-text">Đã phát 0/0</div>
+      </div>
+      <button id="changeBookBtn" class="icon-btn" title="Đổi sổ" aria-label="Đổi sổ">↻</button>
+    </section>
+
+    <section class="stats-row">
+      <div class="mini-stat"><span>Tổng</span><b id="stTotal">0</b></div>
+      <div class="mini-stat good"><span>Đã phát</span><b id="stDone">0</b></div>
+      <div class="mini-stat warn"><span>Còn lại</span><b id="stLeft">0</b></div>
+    </section>
+
+    <section class="collector-line card">
+      <label for="collector">Người đi phát</label>
+      <input id="collector" placeholder="Nhập họ tên">
+    </section>
+
+    <section class="search-card card">
+      <input id="q" class="search" placeholder="🔎 Tìm tên hoặc địa chỉ...">
+      <div class="filters">
+        <button class="filter active" data-filter="all">Tất cả</button>
+        <button class="filter" data-filter="pending">Chưa phát</button>
+        <button class="filter" data-filter="done">Đã phát</button>
+      </div>
+    </section>
+
+    <section id="people" class="people"></section>
+
+    <details class="tools card">
+      <summary>Công cụ khác</summary>
+      <div class="tools-body">
+        <button id="downloadBtn" class="btn light block">Tải file dự phòng</button>
+        <label class="btn light block file-btn">Khôi phục tiến độ
+          <input id="restoreFile" type="file" accept=".json,application/json" hidden>
+        </label>
+        <div id="batchInfo" class="batch-info">—</div>
+      </div>
+    </details>
+  </section>
+</main>
+
+<div id="stickySend" class="sticky-send hidden">
+  <button id="shareBtn" class="btn send-btn">GỬI KẾT QUẢ CHO BCHQS</button>
+</div>
+<div id="toast" class="toast hidden"></div>
+<script src="./app.js"></script>
+</body>
+</html>

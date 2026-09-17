@@ -1,0 +1,10 @@
+{
+  "name":"Sổ phát Quyết định NVQS",
+  "short_name":"Phát QĐ NVQS",
+  "start_url":"./",
+  "scope":"./",
+  "display":"standalone",
+  "background_color":"#f2f5f2",
+  "theme_color":"#0b4a30",
+  "icons":[{"src":"./logo-bchqs.png","sizes":"any","type":"image/png","purpose":"any maskable"}]
+}
