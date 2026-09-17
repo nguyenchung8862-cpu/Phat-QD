@@ -1,4 +1,4 @@
-const CACHE='nvqs-thon-doi-github-v3-search-fix';
+const CACHE='nvqs-thon-doi-github-v5-auto-collector';
 const ASSETS=['./','./index.html','./style.css','./app.js','./manifest.webmanifest','./logo-bchqs.png'];
 self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
