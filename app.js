@@ -30,5 +30,5 @@ $('#downloadBtn').onclick=()=>{if(!state.book)return;const f=resultFile();downlo
 $('#shareBtn').onclick=async()=>{if(!state.book)return;const f=resultFile();const file=new File([f.blob],f.name,{type:'application/json'});try{if(navigator.canShare&&navigator.canShare({files:[file]})){await navigator.share({title:'Kết quả phát Quyết định NVQS',text:`${state.book.thon||''} · ${counts().done}/${counts().total} đã phát`,files:[file]});return}download(f.name,f.blob);toast('Đã tải file. Gửi file này cho BCHQS qua Zalo.')}catch(e){if(e?.name!=='AbortError'){download(f.name,f.blob);toast('Đã tải file để gửi qua Zalo.')}}};
 function updateNet(){const el=$('#netBadge');el.textContent=navigator.onLine?'ONLINE':'OFFLINE';el.classList.toggle('offline',!navigator.onLine)}
 addEventListener('online',updateNet);addEventListener('offline',updateNet);updateNet();
-if('serviceWorker'in navigator)addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+if('serviceWorker'in navigator)addEventListener('load',async()=>{try{const r=await navigator.serviceWorker.register('./sw.js?v=0.1.6',{updateViaCache:'none'});await r.update()}catch{}});
 load();render();
