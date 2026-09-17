@@ -1,5 +1,5 @@
-const CACHE='nvqs-thon-doi-github-v7-force-update';
-const ASSETS=['./index.html','./style.css?v=0.1.6','./app.js?v=0.1.6','./manifest.webmanifest','./logo-bchqs.png'];
+const CACHE='nvqs-thon-doi-github-v8-tap-feedback';
+const ASSETS=['./index.html','./style.css?v=0.1.7','./app.js?v=0.1.7','./manifest.webmanifest','./logo-bchqs.png'];
 self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
 self.addEventListener('fetch',e=>{
